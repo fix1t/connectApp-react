@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputField from "./InputField";
+import PasswordPopup from "./PasswordPopup";
 
 function SignUp(props) {
 	let [user, setUser] = useState({
@@ -10,24 +11,45 @@ function SignUp(props) {
 		lName: "",
 	});
 
+	let [passwordHint, setPasswordHint] = useState({
+		message: "",
+		show: false,
+	});
+
 	function authorize(user) {
 		console.log(
 			"User : " + user.fName + " " + user.lName + " Password : " + user.password
 		);
 		console.log("Authentification ...");
-		setUser({
-			email: "",
-			password: "",
-			confirmedPassword: "",
-			fName: "",
-			lName: "",
-		});
+		let passwordMatch = user.password === user.confirmedPassword;
+
+		console.log("Match :" + passwordMatch);
+		if (passwordMatch === true) {
+			console.log("Authentification successful.".toUpperCase());
+			setUser({
+				email: "",
+				password: "",
+				confirmedPassword: "",
+				fName: "",
+				lName: "",
+			});
+			setPasswordHint(() => ({
+				message: "",
+				show: false,
+			}));
+		} else {
+			console.log("moow");
+			setPasswordHint(() => ({
+				message: "Passwords do not match.",
+				show: true,
+			}));
+		}
 	}
 
 	function handleSubmit(e) {
-		authorize(user);
-    //create user in db
 		e.preventDefault();
+		//create user in db
+		authorize(user);
 	}
 
 	return (
@@ -58,6 +80,7 @@ function SignUp(props) {
 					setUser={setUser}
 					handleSubmit={handleSubmit}
 				/>
+
 				<InputField
 					name="password"
 					placeholder="Enter Your Password."
@@ -65,7 +88,11 @@ function SignUp(props) {
 					type="password"
 					setUser={setUser}
 					handleSubmit={handleSubmit}
+					setPasswordHint={setPasswordHint}
 				/>
+
+				{passwordHint.show && <PasswordPopup message={passwordHint.message} />}
+
 				<InputField
 					name="confirmedPassword"
 					placeholder="Confirm your password."
@@ -74,10 +101,16 @@ function SignUp(props) {
 					setUser={setUser}
 					handleSubmit={handleSubmit}
 				/>
+
 				<button>Submit</button>
 			</form>
-      <p>Already have an accout?</p> 
-      <button onClick={()=>{props.setLogin(true)}}>Signup</button>
+			<p className="prompt">Already have an accout?</p>
+			<button
+				onClick={() => {
+					props.setLogin(true);
+				}}>
+				Sign In
+			</button>
 		</div>
 	);
 }
