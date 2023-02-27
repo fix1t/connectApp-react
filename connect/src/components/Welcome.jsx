@@ -3,8 +3,7 @@ import React from "react";
 function Welcome() {
   return (
     <div >
-      <h1>Welcom to the WALL!</h1>
-      <p>The place to get the latest information.</p>
+      <h1>Checkout Wall!</h1>
     </div>
   );
 }

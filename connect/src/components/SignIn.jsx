@@ -1,23 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import InputField from "./InputField";
 
-function SignIn() {
-  function handleSubmit(e){
-    e.preventDefault();
-  }
+function SignIn(props) {
+	let [user, setUser] = useState({
+		email: "",
+		password: "",
+	});
+
+	function authorize(user) {
+		console.log("User : " + user.email +" Password : "+user.password);
+		console.log("Authentification ...");
+		setUser({
+			email: "",
+			password: "",
+		});
+	}
+
+	function handleSubmit(e) {
+		authorize(user);
+		e.preventDefault();
+	}
 
 
-  return (<form onSubmit={handleSubmit}>
-    <input
-      name="email"
-      placeholder="Email"
-    />
-    <input
-      name="password"
-      placeholder="Password"
-      type="password"
-    />
-    <button>Submit</button>
-  </form>
-  );
+	return (
+		<div>
+			<h1>Login!</h1>
+			<form onSubmit={handleSubmit}>
+				<InputField
+					name="email"
+					placeholder="Email"
+					user={user}
+					value={user.email}
+					type="email"
+					setUser={setUser}
+					handleSubmit={handleSubmit}
+				/>
+				<InputField
+					name="password"
+					placeholder="Password"
+					user={user}
+					type="password"
+					setUser={setUser}
+					handleSubmit={handleSubmit}
+				/>
+				<button>Submit</button>
+			</form>
+			<p>Dont have an account?</p>
+			<button onClick={()=>{props.setLogin(false)}}>Signup</button>
+
+		</div>
+	);
 }
 export default SignIn;
