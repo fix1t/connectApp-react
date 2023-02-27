@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css"
+
 import AppIcon from "./AppIcon";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -12,7 +14,6 @@ function App() {
       <Welcome />
       {login && <SignIn setLogin={setLogin}/>}
       {!login && <SignUp setLogin={setLogin}/>}
-
       
     </div>
   );

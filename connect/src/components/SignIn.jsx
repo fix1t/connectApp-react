@@ -45,8 +45,8 @@ function SignIn(props) {
 				/>
 				<button>Submit</button>
 			</form>
-			<p>Dont have an account?</p>
-			<button onClick={()=>{props.setLogin(false)}}>Signup</button>
+			<p className="prompt">Dont have an account?</p>
+			<button onClick={()=>{props.setLogin(false)}}>Sign Up</button>
 
 		</div>
 	);
