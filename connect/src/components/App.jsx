@@ -1,22 +1,18 @@
 import React, { useState } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css"
 
-import AppIcon from "./AppIcon";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Welcome from "./Welcome";
+import Landing from "./Landing/Landing";
+import Wall from "./Wall/Wall";
 
 function App() {
-  let [login, setLogin] = useState(true);
-  return (
-    <div className="container">
-      <AppIcon />
-      <Welcome />
-      {login && <SignIn setLogin={setLogin}/>}
-      {!login && <SignUp setLogin={setLogin}/>}
-      
-    </div>
-  );
+	let [authorized, setAuthorized] = useState(true);
+
+	return (
+		<div>
+			{!authorized && <Landing setAuthorized={setAuthorized} />}
+
+			{authorized && <Wall setAuthorized={setAuthorized} />}
+		</div>
+	);
 }
 
 export default App;

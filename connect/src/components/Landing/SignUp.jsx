@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
 import InputField from "./InputField";
 import PasswordPopup from "./PasswordPopup";
 
 function SignUp(props) {
+
+	const navigateTo = redirect();
+
+
 	let [user, setUser] = useState({
 		email: "",
-		password: "",
+		newPassword: "",
 		confirmedPassword: "",
 		fName: "",
 		lName: "",
@@ -21,14 +26,14 @@ function SignUp(props) {
 			"User : " + user.fName + " " + user.lName + " Password : " + user.password
 		);
 		console.log("Authentification ...");
-		let passwordMatch = user.password === user.confirmedPassword;
 
-		console.log("Match :" + passwordMatch);
+		let passwordMatch = user.newPassword === user.confirmedPassword;
+
 		if (passwordMatch === true) {
 			console.log("Authentification successful.".toUpperCase());
 			setUser({
 				email: "",
-				password: "",
+				newPassword: "",
 				confirmedPassword: "",
 				fName: "",
 				lName: "",
@@ -37,8 +42,10 @@ function SignUp(props) {
 				message: "",
 				show: false,
 			}));
+
+			navigateTo("/wall");
+			
 		} else {
-			console.log("moow");
 			setPasswordHint(() => ({
 				message: "Passwords do not match.",
 				show: true,
@@ -82,7 +89,7 @@ function SignUp(props) {
 				/>
 
 				<InputField
-					name="password"
+					name="newPassword"
 					placeholder="Enter Your Password."
 					user={user}
 					type="password"
