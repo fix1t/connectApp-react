@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import CreateArea from "./CreateArea";
-import Note from "./Note";
+import Post from "./Post";
 import Footer from "./Footer";
 
 function Wall(props) {
 	document.getElementById("CSS").href = "./wall.css";
 
-	const [post, setPost] = useState([]);
+	const [posts, setPosts] = useState([]);
 
-	function addPost(newNote) {
-		setPost((prevNotes) => {
-			return [...prevNotes, newNote];
+	function addPost(newPost) {
+		setPosts((prevPosts) => {
+			return [...prevPosts, newPost];
 		});
 	}
 
 	function deletePost(id) {
-		setPost((prevNotes) => {
-			return prevNotes.filter((noteItem, index) => {
+		setPosts((prevPosts) => {
+			return prevPosts.filter((postItem, index) => {
 				return index !== id;
 			});
 		});
@@ -28,9 +28,9 @@ function Wall(props) {
 			<Header setAuthorized={props.setAuthorized} />
 			<Footer />
 			<CreateArea onAdd={addPost} />
-			{post.map((noteItem, index) => {
+			{posts.map((noteItem, index) => {
 				return (
-					<Note
+					<Post
 						key={index}
 						id={index}
 						title={noteItem.title}

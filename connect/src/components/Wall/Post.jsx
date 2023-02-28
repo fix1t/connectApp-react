@@ -2,7 +2,7 @@ import React from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function Note(props) {
+function Post(props) {
   function handleClick() {
     props.onDelete(props.id);
   }
@@ -18,4 +18,4 @@ function Note(props) {
   );
 }
 
-export default Note;
+export default Post;
