@@ -6,7 +6,7 @@ function InputField(props) {
 		let attributeName = e.target.name;
 
 		//check criteria for password upper,lower,number..
-		if (attributeName === "password") {
+		if (attributeName === "newPassword") {
 			let passwordCriteria = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$");
 			console.log(newValue);
 			let metCriteria = passwordCriteria.test(newValue.toString());

@@ -14,6 +14,10 @@ function SignIn(props) {
 			email: "",
 			password: "",
 		});
+		let passwordMatch = true
+		if (passwordMatch) {
+			props.setAuthorized(true)
+		}
 	}
 
 	function handleSubmit(e) {
@@ -31,7 +35,7 @@ function SignIn(props) {
 					placeholder="Email"
 					user={user}
 					value={user.email}
-					type="email"
+					// type="email"
 					setUser={setUser}
 					handleSubmit={handleSubmit}
 				/>
