@@ -1,0 +1,12 @@
+{
+  "name": "login-system-with-comment-wall",
+  "version": "1.0.0",
+  "description": "# To run both frontend and backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "(cd api && npm install); (cd client && npm install && npm start);"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
