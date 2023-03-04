@@ -58,7 +58,7 @@
   "devDependencies": {
     "concurrently": "^7.6.0"
   },
-  "proxy": "http://localhost:5000/api/",
+  "proxy": "http://localhost:5050/api/",
   "main": "index.js",
   "keywords": [],
   "author": "",
