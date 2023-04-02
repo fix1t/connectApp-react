@@ -6,7 +6,7 @@ Connect is a React web application that allows users to register and login to th
 ## Getting Started:
 To start using Connect, you must first have Node.js and NPM (Node Package Manager) installed on your computer. Once you have Node.js installed, follow these steps:
 
-1. Clone the SharePosts repository from Github.
+1. Clone the this repository from Github.
 2. Install the necessary dependencies and start local servers by running `npm start` in the root directory of the project.
 
 ## Backend endpoints:
